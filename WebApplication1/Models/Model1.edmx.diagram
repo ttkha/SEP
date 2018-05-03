@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a64771771fa423aa01a4823311c4280" Name="Diagram1">
+        <EntityTypeShape EntityType="SEPModel.BuoiHoc" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.DiemDanh" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.GiangVien" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.KhoaHoc" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.LichHoc" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.MonHoc" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.SinhVien" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.ThamDu" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SEPModel.User" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="SEPModel.FK_BuoiHoc_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_DiemDanh_BuoiHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_DiemDanh_SinhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_GiangVien_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_KhoaHoc_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_LichHoc_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_ThamDu_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SEPModel.FK_ThamDu_SinhVien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
