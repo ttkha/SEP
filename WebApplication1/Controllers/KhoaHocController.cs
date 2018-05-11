@@ -20,5 +20,11 @@ namespace WebApplication1.Controllers
             return View(item);
             
         }
+        public ActionResult Detail(string id)
+        {
+            int makh = int.Parse(id);
+            var model = db.ThamDus.Where(x => x.MaKH == makh).ToList();
+            return View(model);
+        }
     }
 }
