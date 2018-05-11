@@ -14,11 +14,22 @@ namespace WebApplication1.Models
     
     public partial class GiangVien
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GiangVien()
+        {
+            this.BangUsers = new HashSet<BangUser>();
+            this.Users = new HashSet<User>();
+        }
+    
         public int ID { get; set; }
         public string MaGV { get; set; }
         public string TenGV { get; set; }
         public int MaKH { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BangUser> BangUsers { get; set; }
         public virtual KhoaHoc KhoaHoc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

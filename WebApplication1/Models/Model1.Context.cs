@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SEPEntities : DbContext
+    public partial class SEPEntities1 : DbContext
     {
-        public SEPEntities()
-            : base("name=SEPEntities")
+        public SEPEntities1()
+            : base("name=SEPEntities1")
         {
         }
     
@@ -25,6 +25,7 @@ namespace WebApplication1.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BangUser> BangUsers { get; set; }
         public virtual DbSet<BuoiHoc> BuoiHocs { get; set; }
         public virtual DbSet<DiemDanh> DiemDanhs { get; set; }
         public virtual DbSet<GiangVien> GiangViens { get; set; }

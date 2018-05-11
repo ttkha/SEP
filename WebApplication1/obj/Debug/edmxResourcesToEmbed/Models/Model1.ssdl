@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SEPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BangUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaGV" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
   <EntityType Name="BuoiHoc">
     <Key>
       <PropertyRef Name="ID" />
@@ -90,7 +99,20 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="50" />
     <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="MaGV" Type="varchar" MaxLength="10" />
   </EntityType>
+  <Association Name="FK_BangUser_GiangVien">
+    <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="1" />
+    <End Role="BangUser" Type="Self.BangUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiangVien">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="BangUser">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BuoiHoc_KhoaHoc">
     <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
     <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="*" />
@@ -187,7 +209,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_User_GiangVien">
+    <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiangVien">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="SEPModelStoreContainer">
+    <EntitySet Name="BangUser" EntityType="Self.BangUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BuoiHoc" EntityType="Self.BuoiHoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DiemDanh" EntityType="Self.DiemDanh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GiangVien" EntityType="Self.GiangVien" Schema="dbo" store:Type="Tables" />
@@ -198,6 +233,10 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThamDu" EntityType="Self.ThamDu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BangUser_GiangVien" Association="Self.FK_BangUser_GiangVien">
+      <End Role="GiangVien" EntitySet="GiangVien" />
+      <End Role="BangUser" EntitySet="BangUser" />
+    </AssociationSet>
     <AssociationSet Name="FK_BuoiHoc_KhoaHoc" Association="Self.FK_BuoiHoc_KhoaHoc">
       <End Role="KhoaHoc" EntitySet="KhoaHoc" />
       <End Role="BuoiHoc" EntitySet="BuoiHoc" />
@@ -229,6 +268,10 @@
     <AssociationSet Name="FK_ThamDu_SinhVien" Association="Self.FK_ThamDu_SinhVien">
       <End Role="SinhVien" EntitySet="SinhVien" />
       <End Role="ThamDu" EntitySet="ThamDu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_GiangVien" Association="Self.FK_User_GiangVien">
+      <End Role="GiangVien" EntitySet="GiangVien" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

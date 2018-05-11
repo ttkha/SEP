@@ -10,7 +10,7 @@ namespace WebApplication1.Controllers
 
     public class HomeController : Controller
     {
-        SEPEntities db = new SEPEntities();
+        SEPEntities1 db = new SEPEntities1();
         public ActionResult Index()
         {
             return View();
@@ -24,13 +24,13 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            var user = db.Users.FirstOrDefault(x => x.UserName == username);
+            var user = db.BangUsers.FirstOrDefault(x => x.UserName == username);
             if (user != null)
             {
-                if (user.Password.Equals(password))
+                if (user.PassWord.Equals(password))
                 {
-                    Session["ID"] = user.ID;
-                    //Session["MaGV"] = user.maGV;
+                    Session["ID"] = user.MaGV;
+                    
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -40,6 +40,17 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
+        public ActionResult Logout()
+        {
+            var user = db.Users;
+            if (user != null)
+            {
+                Session["FullName"] = null;
+                Session["UserID"] = null;
+            }
+            return RedirectToAction("Login", "Home");
+        }
+
 
 
     }

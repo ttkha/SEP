@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SEPModelStoreContainer" CdmEntityContainer="SEPEntities">
+  <EntityContainerMapping StorageEntityContainer="SEPModelStoreContainer" CdmEntityContainer="SEPEntities1">
+    <EntitySetMapping Name="BangUsers">
+      <EntityTypeMapping TypeName="SEPModel.BangUser">
+        <MappingFragment StoreEntitySet="BangUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="BuoiHocs">
       <EntityTypeMapping TypeName="SEPModel.BuoiHoc">
         <MappingFragment StoreEntitySet="BuoiHoc">
@@ -99,6 +109,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

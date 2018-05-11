@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SEPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BangUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GiangVien" Relationship="Self.FK_BangUser_GiangVien" FromRole="BangUser" ToRole="GiangVien" />
+  </EntityType>
   <EntityType Name="BuoiHoc">
     <Key>
       <PropertyRef Name="ID" />
@@ -30,7 +40,9 @@
     <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MaKH" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BangUsers" Relationship="Self.FK_BangUser_GiangVien" FromRole="GiangVien" ToRole="BangUser" />
     <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_GiangVien_KhoaHoc" FromRole="GiangVien" ToRole="KhoaHoc" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_GiangVien" FromRole="GiangVien" ToRole="User" />
   </EntityType>
   <EntityType Name="KhoaHoc">
     <Key>
@@ -106,7 +118,21 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GiangVien" Relationship="Self.FK_User_GiangVien" FromRole="User" ToRole="GiangVien" />
   </EntityType>
+  <Association Name="FK_BangUser_GiangVien">
+    <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="1" />
+    <End Role="BangUser" Type="Self.BangUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiangVien">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="BangUser">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BuoiHoc_KhoaHoc">
     <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
     <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="*" />
@@ -152,6 +178,18 @@
       </Principal>
       <Dependent Role="GiangVien">
         <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_GiangVien">
+    <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiangVien">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="MaGV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -203,7 +241,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SEPEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="SEPEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BangUsers" EntityType="Self.BangUser" />
     <EntitySet Name="BuoiHocs" EntityType="Self.BuoiHoc" />
     <EntitySet Name="DiemDanhs" EntityType="Self.DiemDanh" />
     <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
@@ -214,6 +253,10 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="ThamDus" EntityType="Self.ThamDu" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_BangUser_GiangVien" Association="Self.FK_BangUser_GiangVien">
+      <End Role="GiangVien" EntitySet="GiangViens" />
+      <End Role="BangUser" EntitySet="BangUsers" />
+    </AssociationSet>
     <AssociationSet Name="FK_BuoiHoc_KhoaHoc" Association="Self.FK_BuoiHoc_KhoaHoc">
       <End Role="KhoaHoc" EntitySet="KhoaHocs" />
       <End Role="BuoiHoc" EntitySet="BuoiHocs" />
@@ -229,6 +272,10 @@
     <AssociationSet Name="FK_GiangVien_KhoaHoc" Association="Self.FK_GiangVien_KhoaHoc">
       <End Role="KhoaHoc" EntitySet="KhoaHocs" />
       <End Role="GiangVien" EntitySet="GiangViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_GiangVien" Association="Self.FK_User_GiangVien">
+      <End Role="GiangVien" EntitySet="GiangViens" />
+      <End Role="User" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK_KhoaHoc_MonHoc" Association="Self.FK_KhoaHoc_MonHoc">
       <End Role="MonHoc" EntitySet="MonHocs" />
