@@ -17,19 +17,16 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GiangVien()
         {
-            this.BangUsers = new HashSet<BangUser>();
-            this.Users = new HashSet<User>();
+            this.GiangDays = new HashSet<GiangDay>();
         }
     
         public int ID { get; set; }
         public string MaGV { get; set; }
         public string TenGV { get; set; }
-        public int MaKH { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BangUser> BangUsers { get; set; }
-        public virtual KhoaHoc KhoaHoc { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<GiangDay> GiangDays { get; set; }
     }
 }

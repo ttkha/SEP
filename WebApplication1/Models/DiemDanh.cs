@@ -15,9 +15,8 @@ namespace WebApplication1.Models
     public partial class DiemDanh
     {
         public int ID { get; set; }
-        public int MaBuoiHoc { get; set; }
         public string MaSV { get; set; }
-        public Nullable<int> Trangthai { get; set; }
+        public int ID_BuoiHoc { get; set; }
     
         public virtual BuoiHoc BuoiHoc { get; set; }
         public virtual SinhVien SinhVien { get; set; }

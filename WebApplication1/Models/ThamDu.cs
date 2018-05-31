@@ -14,11 +14,11 @@ namespace WebApplication1.Models
     
     public partial class ThamDu
     {
-        public int ID { get; set; }
         public string MaSV { get; set; }
-        public int MaKH { get; set; }
+        public int ID_Course { get; set; }
+        public Nullable<bool> Status { get; set; }
     
-        public virtual KhoaHoc KhoaHoc { get; set; }
+        public virtual Course Course { get; set; }
         public virtual SinhVien SinhVien { get; set; }
     }
 }

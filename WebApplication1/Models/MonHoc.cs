@@ -17,7 +17,8 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MonHoc()
         {
-            this.KhoaHocs = new HashSet<KhoaHoc>();
+            this.Courses = new HashSet<Course>();
+            this.GiangDays = new HashSet<GiangDay>();
         }
     
         public int ID { get; set; }
@@ -26,6 +27,8 @@ namespace WebApplication1.Models
         public string Mota { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhoaHoc> KhoaHocs { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiangDay> GiangDays { get; set; }
     }
 }

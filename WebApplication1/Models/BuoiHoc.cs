@@ -21,11 +21,11 @@ namespace WebApplication1.Models
         }
     
         public int ID { get; set; }
-        public System.DateTime NgayHoc { get; set; }
-        public int MaKH { get; set; }
-        public int SoBuoi { get; set; }
+        public System.DateTime Ngayhoc { get; set; }
+        public int ID_Course { get; set; }
+        public int Buoi_thu { get; set; }
     
-        public virtual KhoaHoc KhoaHoc { get; set; }
+        public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiemDanh> DiemDanhs { get; set; }
     }

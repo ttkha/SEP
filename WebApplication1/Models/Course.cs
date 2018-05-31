@@ -12,30 +12,25 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KhoaHoc
+    public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhoaHoc()
+        public Course()
         {
             this.BuoiHocs = new HashSet<BuoiHoc>();
-            this.GiangViens = new HashSet<GiangVien>();
-            this.LichHocs = new HashSet<LichHoc>();
             this.ThamDus = new HashSet<ThamDu>();
         }
     
         public int ID { get; set; }
-        public string TenKH { get; set; }
-        public System.DateTime NgayBatDau { get; set; }
-        public System.DateTime NgayKetThuc { get; set; }
-        public string MaMH { get; set; }
+        public string Ma_lop { get; set; }
+        public int MaMH { get; set; }
+        public string Phong { get; set; }
+        public System.DateTime Ngaybatdau { get; set; }
+        public System.DateTime Ngayketthuc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuoiHoc> BuoiHocs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GiangVien> GiangViens { get; set; }
         public virtual MonHoc MonHoc { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LichHoc> LichHocs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThamDu> ThamDus { get; set; }
     }
