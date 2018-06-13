@@ -163,6 +163,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\MonHocController.cs" />
+    <Compile Include="DAL\Data.cs" />
+    <Compile Include="DAL\Utility.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
