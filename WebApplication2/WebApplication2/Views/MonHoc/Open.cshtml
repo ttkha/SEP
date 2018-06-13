@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<WebApplication2.Models.GiangDay>
+@model IEnumerable<WebApplication2.Models.MonHoc>
 @{
     ViewBag.Title = "Open";
 
@@ -34,17 +34,17 @@
                                 {
                                     <tr>
                                         <td>
-                                            <a href="~/Course/Index/@item.ID_MonHoc">
-                                                @Html.DisplayFor(modelItem => item.MonHoc.MaMH)
-
+                                            <a href="~/Course/Index/@item.MaMH">
+                                                @Html.DisplayFor(modelItem => item.MaMH)
+                                                </a>
                                         </td>
                                         <td>
-                                            <a href="~/Course/Index/@item.ID_MonHoc">
-                                                @Html.DisplayFor(modelItem => item.MonHoc.TenMH)
+                                            <a href="~/Course/Index/@item.MaMH">
+                                                @Html.DisplayFor(modelItem => item.TenMH)
                                             </a>
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MonHoc.Mota)
+                                            @Html.DisplayFor(modelItem => item.Mota)
                                         </td>
                                     </tr>
                                 }
