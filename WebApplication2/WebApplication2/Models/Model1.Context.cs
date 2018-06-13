@@ -13,10 +13,10 @@ namespace WebApplication2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SEP_DTBEntities1 : DbContext
+    public partial class SepEntities : DbContext
     {
-        public SEP_DTBEntities1()
-            : base("name=SEP_DTBEntities1")
+        public SepEntities()
+            : base("name=SepEntities")
         {
         }
     
@@ -26,12 +26,13 @@ namespace WebApplication2.Models
         }
     
         public virtual DbSet<BuoiHoc> BuoiHocs { get; set; }
-        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<DiemDanh> DiemDanhs { get; set; }
         public virtual DbSet<GiangDay> GiangDays { get; set; }
         public virtual DbSet<GiangVien> GiangViens { get; set; }
+        public virtual DbSet<KhoaHoc> KhoaHocs { get; set; }
         public virtual DbSet<MonHoc> MonHocs { get; set; }
         public virtual DbSet<SinhVien> SinhViens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThamDu> ThamDus { get; set; }
     }
 }

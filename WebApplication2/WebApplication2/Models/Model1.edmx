@@ -4,101 +4,99 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SEP_DTBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BuoiHoc">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_BH" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ngayhoc" Type="datetime" Nullable="false" />
-          <Property Name="ID_Course" Type="int" Nullable="false" />
-          <Property Name="Buoi_thu" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Course">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ma_lop" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="MaMH" Type="int" Nullable="false" />
-          <Property Name="Phong" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Ngaybatdau" Type="datetime" Nullable="false" />
-          <Property Name="Ngayketthuc" Type="datetime" Nullable="false" />
+          <Property Name="ID_BH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayHoc" Type="datetime" />
+          <Property Name="MaKH" Type="nvarchar" MaxLength="50" />
+          <Property Name="Buoi_thu" Type="int" />
         </EntityType>
         <EntityType Name="DiemDanh">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaSV" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MSSV" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_BuoiHoc" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" />
         </EntityType>
         <EntityType Name="GiangDay">
           <Key>
             <PropertyRef Name="ID_GiangVien" />
-            <PropertyRef Name="ID_MonHoc" />
+            <PropertyRef Name="MaMH" />
           </Key>
           <Property Name="ID_GiangVien" Type="int" Nullable="false" />
-          <Property Name="ID_MonHoc" Type="int" Nullable="false" />
-          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="MaMH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" />
         </EntityType>
         <EntityType Name="GiangVien">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaGV" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TenGV" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaGV" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenGV" Type="nvarchar" MaxLength="50" />
+          <Property Name="Usename" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KhoaHoc">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaMH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phong" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MonHoc">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MaMH" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaMH" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="TenMH" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MaMH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenMH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Mota" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SinhVien">
           <Key>
-            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="MSSV" />
           </Key>
-          <Property Name="MaSV" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Hoten" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Ngaysinh" Type="datetime" Nullable="false" />
+          <Property Name="MSSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ThamDu">
           <Key>
-            <PropertyRef Name="MaSV" />
-            <PropertyRef Name="ID_Course" />
+            <PropertyRef Name="MSSV" />
+            <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaSV" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="ID_Course" Type="int" Nullable="false" />
-          <Property Name="Status" Type="bit" />
+          <Property Name="MSSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" />
         </EntityType>
-        <Association Name="FK_BuoiHoc_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+        <Association Name="FK_BuoiHoc_KhoaHoc">
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1" />
           <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="ID" />
+            <Principal Role="KhoaHoc">
+              <PropertyRef Name="MaKH" />
             </Principal>
             <Dependent Role="BuoiHoc">
-              <PropertyRef Name="ID_Course" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Course_MonHoc1">
-          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
-          <End Role="Course" Type="Self.Course" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MonHoc">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Course">
-              <PropertyRef Name="MaMH" />
+              <PropertyRef Name="MaKH" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -107,7 +105,7 @@
           <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BuoiHoc">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_BH" />
             </Principal>
             <Dependent Role="DiemDanh">
               <PropertyRef Name="ID_BuoiHoc" />
@@ -119,10 +117,10 @@
           <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SinhVien">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Principal>
             <Dependent Role="DiemDanh">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -143,22 +141,34 @@
           <End Role="GiangDay" Type="Self.GiangDay" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MonHoc">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="MaMH" />
             </Principal>
             <Dependent Role="GiangDay">
-              <PropertyRef Name="ID_MonHoc" />
+              <PropertyRef Name="MaMH" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ThamDu_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+        <Association Name="FK_KhoaHoc_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMH" />
+            </Principal>
+            <Dependent Role="KhoaHoc">
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThamDu_KhoaHoc">
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
           <End Role="ThamDu" Type="Self.ThamDu" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="ID" />
+            <Principal Role="KhoaHoc">
+              <PropertyRef Name="MaKH" />
             </Principal>
             <Dependent Role="ThamDu">
-              <PropertyRef Name="ID_Course" />
+              <PropertyRef Name="MaKH" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -167,29 +177,26 @@
           <End Role="ThamDu" Type="Self.ThamDu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SinhVien">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Principal>
             <Dependent Role="ThamDu">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SEP_DTBModelStoreContainer">
+        <EntityContainer Name="SepModelStoreContainer">
           <EntitySet Name="BuoiHoc" EntityType="Self.BuoiHoc" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiemDanh" EntityType="Self.DiemDanh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiangDay" EntityType="Self.GiangDay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiangVien" EntityType="Self.GiangVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThamDu" EntityType="Self.ThamDu" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BuoiHoc_Course" Association="Self.FK_BuoiHoc_Course">
-            <End Role="Course" EntitySet="Course" />
+          <AssociationSet Name="FK_BuoiHoc_KhoaHoc" Association="Self.FK_BuoiHoc_KhoaHoc">
+            <End Role="KhoaHoc" EntitySet="KhoaHoc" />
             <End Role="BuoiHoc" EntitySet="BuoiHoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Course_MonHoc1" Association="Self.FK_Course_MonHoc1">
-            <End Role="MonHoc" EntitySet="MonHoc" />
-            <End Role="Course" EntitySet="Course" />
           </AssociationSet>
           <AssociationSet Name="FK_DiemDanh_BuoiHoc" Association="Self.FK_DiemDanh_BuoiHoc">
             <End Role="BuoiHoc" EntitySet="BuoiHoc" />
@@ -207,8 +214,12 @@
             <End Role="MonHoc" EntitySet="MonHoc" />
             <End Role="GiangDay" EntitySet="GiangDay" />
           </AssociationSet>
-          <AssociationSet Name="FK_ThamDu_Course" Association="Self.FK_ThamDu_Course">
-            <End Role="Course" EntitySet="Course" />
+          <AssociationSet Name="FK_KhoaHoc_MonHoc" Association="Self.FK_KhoaHoc_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="KhoaHoc" EntitySet="KhoaHoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThamDu_KhoaHoc" Association="Self.FK_ThamDu_KhoaHoc">
+            <End Role="KhoaHoc" EntitySet="KhoaHoc" />
             <End Role="ThamDu" EntitySet="ThamDu" />
           </AssociationSet>
           <AssociationSet Name="FK_ThamDu_SinhVien" Association="Self.FK_ThamDu_SinhVien">
@@ -220,50 +231,37 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SEP_DTBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SepModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BuoiHoc">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_BH" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ngayhoc" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ID_Course" Type="Int32" Nullable="false" />
-          <Property Name="Buoi_thu" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="Self.FK_BuoiHoc_Course" FromRole="BuoiHoc" ToRole="Course" />
+          <Property Name="ID_BH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayHoc" Type="DateTime" Precision="3" />
+          <Property Name="MaKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Buoi_thu" Type="Int32" />
+          <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_BuoiHoc_KhoaHoc" FromRole="BuoiHoc" ToRole="KhoaHoc" />
           <NavigationProperty Name="DiemDanhs" Relationship="Self.FK_DiemDanh_BuoiHoc" FromRole="BuoiHoc" ToRole="DiemDanh" />
-        </EntityType>
-        <EntityType Name="Course">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ma_lop" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaMH" Type="Int32" Nullable="false" />
-          <Property Name="Phong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Ngaybatdau" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Ngayketthuc" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="BuoiHocs" Relationship="Self.FK_BuoiHoc_Course" FromRole="Course" ToRole="BuoiHoc" />
-          <NavigationProperty Name="MonHoc" Relationship="Self.FK_Course_MonHoc1" FromRole="Course" ToRole="MonHoc" />
-          <NavigationProperty Name="ThamDus" Relationship="Self.FK_ThamDu_Course" FromRole="Course" ToRole="ThamDu" />
         </EntityType>
         <EntityType Name="DiemDanh">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MSSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_BuoiHoc" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" />
           <NavigationProperty Name="BuoiHoc" Relationship="Self.FK_DiemDanh_BuoiHoc" FromRole="DiemDanh" ToRole="BuoiHoc" />
           <NavigationProperty Name="SinhVien" Relationship="Self.FK_DiemDanh_SinhVien" FromRole="DiemDanh" ToRole="SinhVien" />
         </EntityType>
         <EntityType Name="GiangDay">
           <Key>
             <PropertyRef Name="ID_GiangVien" />
-            <PropertyRef Name="ID_MonHoc" />
+            <PropertyRef Name="MaMH" />
           </Key>
           <Property Name="ID_GiangVien" Type="Int32" Nullable="false" />
-          <Property Name="ID_MonHoc" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="MaMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Boolean" />
           <NavigationProperty Name="GiangVien" Relationship="Self.FK_GiangDay_GiangVien" FromRole="GiangDay" ToRole="GiangVien" />
           <NavigationProperty Name="MonHoc" Relationship="Self.FK_GiangDay_MonHoc" FromRole="GiangDay" ToRole="MonHoc" />
         </EntityType>
@@ -272,53 +270,76 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Usename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GiangDays" Relationship="Self.FK_GiangDay_GiangVien" FromRole="GiangVien" ToRole="GiangDay" />
+        </EntityType>
+        <EntityType Name="KhoaHoc">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BuoiHocs" Relationship="Self.FK_BuoiHoc_KhoaHoc" FromRole="KhoaHoc" ToRole="BuoiHoc" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.FK_KhoaHoc_MonHoc" FromRole="KhoaHoc" ToRole="MonHoc" />
+          <NavigationProperty Name="ThamDus" Relationship="Self.FK_ThamDu_KhoaHoc" FromRole="KhoaHoc" ToRole="ThamDu" />
         </EntityType>
         <EntityType Name="MonHoc">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MaMH" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaMH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenMH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Courses" Relationship="Self.FK_Course_MonHoc1" FromRole="MonHoc" ToRole="Course" />
           <NavigationProperty Name="GiangDays" Relationship="Self.FK_GiangDay_MonHoc" FromRole="MonHoc" ToRole="GiangDay" />
+          <NavigationProperty Name="KhoaHocs" Relationship="Self.FK_KhoaHoc_MonHoc" FromRole="MonHoc" ToRole="KhoaHoc" />
         </EntityType>
         <EntityType Name="SinhVien">
           <Key>
-            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="MSSV" />
           </Key>
-          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ngaysinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MSSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DiemDanhs" Relationship="Self.FK_DiemDanh_SinhVien" FromRole="SinhVien" ToRole="DiemDanh" />
           <NavigationProperty Name="ThamDus" Relationship="Self.FK_ThamDu_SinhVien" FromRole="SinhVien" ToRole="ThamDu" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="ThamDu">
           <Key>
-            <PropertyRef Name="MaSV" />
-            <PropertyRef Name="ID_Course" />
+            <PropertyRef Name="MSSV" />
+            <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ID_Course" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="Course" Relationship="Self.FK_ThamDu_Course" FromRole="ThamDu" ToRole="Course" />
+          <Property Name="MSSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Boolean" />
+          <NavigationProperty Name="KhoaHoc" Relationship="Self.FK_ThamDu_KhoaHoc" FromRole="ThamDu" ToRole="KhoaHoc" />
           <NavigationProperty Name="SinhVien" Relationship="Self.FK_ThamDu_SinhVien" FromRole="ThamDu" ToRole="SinhVien" />
         </EntityType>
-        <Association Name="FK_BuoiHoc_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+        <Association Name="FK_BuoiHoc_KhoaHoc">
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1" />
           <End Role="BuoiHoc" Type="Self.BuoiHoc" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="ID" />
+            <Principal Role="KhoaHoc">
+              <PropertyRef Name="MaKH" />
             </Principal>
             <Dependent Role="BuoiHoc">
-              <PropertyRef Name="ID_Course" />
+              <PropertyRef Name="MaKH" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -327,34 +348,10 @@
           <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BuoiHoc">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_BH" />
             </Principal>
             <Dependent Role="DiemDanh">
               <PropertyRef Name="ID_BuoiHoc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Course_MonHoc1">
-          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
-          <End Role="Course" Type="Self.Course" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MonHoc">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Course">
-              <PropertyRef Name="MaMH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ThamDu_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="ThamDu" Type="Self.ThamDu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ThamDu">
-              <PropertyRef Name="ID_Course" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -363,10 +360,10 @@
           <End Role="DiemDanh" Type="Self.DiemDanh" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SinhVien">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Principal>
             <Dependent Role="DiemDanh">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -387,10 +384,34 @@
           <End Role="GiangDay" Type="Self.GiangDay" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MonHoc">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="MaMH" />
             </Principal>
             <Dependent Role="GiangDay">
-              <PropertyRef Name="ID_MonHoc" />
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KhoaHoc_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMH" />
+            </Principal>
+            <Dependent Role="KhoaHoc">
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThamDu_KhoaHoc">
+          <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+          <End Role="ThamDu" Type="Self.ThamDu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhoaHoc">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="ThamDu">
+              <PropertyRef Name="MaKH" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,37 +420,30 @@
           <End Role="ThamDu" Type="Self.ThamDu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SinhVien">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Principal>
             <Dependent Role="ThamDu">
-              <PropertyRef Name="MaSV" />
+              <PropertyRef Name="MSSV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SEP_DTBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SepEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BuoiHocs" EntityType="Self.BuoiHoc" />
-          <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="DiemDanhs" EntityType="Self.DiemDanh" />
           <EntitySet Name="GiangDays" EntityType="Self.GiangDay" />
           <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
+          <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
           <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
           <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="ThamDus" EntityType="Self.ThamDu" />
-          <AssociationSet Name="FK_BuoiHoc_Course" Association="Self.FK_BuoiHoc_Course">
-            <End Role="Course" EntitySet="Courses" />
+          <AssociationSet Name="FK_BuoiHoc_KhoaHoc" Association="Self.FK_BuoiHoc_KhoaHoc">
+            <End Role="KhoaHoc" EntitySet="KhoaHocs" />
             <End Role="BuoiHoc" EntitySet="BuoiHocs" />
           </AssociationSet>
           <AssociationSet Name="FK_DiemDanh_BuoiHoc" Association="Self.FK_DiemDanh_BuoiHoc">
             <End Role="BuoiHoc" EntitySet="BuoiHocs" />
             <End Role="DiemDanh" EntitySet="DiemDanhs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Course_MonHoc1" Association="Self.FK_Course_MonHoc1">
-            <End Role="MonHoc" EntitySet="MonHocs" />
-            <End Role="Course" EntitySet="Courses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ThamDu_Course" Association="Self.FK_ThamDu_Course">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="ThamDu" EntitySet="ThamDus" />
           </AssociationSet>
           <AssociationSet Name="FK_DiemDanh_SinhVien" Association="Self.FK_DiemDanh_SinhVien">
             <End Role="SinhVien" EntitySet="SinhViens" />
@@ -443,6 +457,14 @@
             <End Role="MonHoc" EntitySet="MonHocs" />
             <End Role="GiangDay" EntitySet="GiangDays" />
           </AssociationSet>
+          <AssociationSet Name="FK_KhoaHoc_MonHoc" Association="Self.FK_KhoaHoc_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="KhoaHoc" EntitySet="KhoaHocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThamDu_KhoaHoc" Association="Self.FK_ThamDu_KhoaHoc">
+            <End Role="KhoaHoc" EntitySet="KhoaHocs" />
+            <End Role="ThamDu" EntitySet="ThamDus" />
+          </AssociationSet>
           <AssociationSet Name="FK_ThamDu_SinhVien" Association="Self.FK_ThamDu_SinhVien">
             <End Role="SinhVien" EntitySet="SinhViens" />
             <End Role="ThamDu" EntitySet="ThamDus" />
@@ -453,62 +475,60 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SEP_DTBModelStoreContainer" CdmEntityContainer="SEP_DTBEntities1">
+        <EntityContainerMapping StorageEntityContainer="SepModelStoreContainer" CdmEntityContainer="SepEntities">
           <EntitySetMapping Name="BuoiHocs">
-            <EntityTypeMapping TypeName="SEP_DTBModel.BuoiHoc">
+            <EntityTypeMapping TypeName="SepModel.BuoiHoc">
               <MappingFragment StoreEntitySet="BuoiHoc">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Ngayhoc" ColumnName="Ngayhoc" />
-                <ScalarProperty Name="ID_Course" ColumnName="ID_Course" />
+                <ScalarProperty Name="ID_BH" ColumnName="ID_BH" />
+                <ScalarProperty Name="NgayHoc" ColumnName="NgayHoc" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="Buoi_thu" ColumnName="Buoi_thu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="SEP_DTBModel.Course">
-              <MappingFragment StoreEntitySet="Course">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
-                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
-                <ScalarProperty Name="Phong" ColumnName="Phong" />
-                <ScalarProperty Name="Ngaybatdau" ColumnName="Ngaybatdau" />
-                <ScalarProperty Name="Ngayketthuc" ColumnName="Ngayketthuc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DiemDanhs">
-            <EntityTypeMapping TypeName="SEP_DTBModel.DiemDanh">
+            <EntityTypeMapping TypeName="SepModel.DiemDanh">
               <MappingFragment StoreEntitySet="DiemDanh">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="MSSV" ColumnName="MSSV" />
                 <ScalarProperty Name="ID_BuoiHoc" ColumnName="ID_BuoiHoc" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiangDays">
-            <EntityTypeMapping TypeName="SEP_DTBModel.GiangDay">
+            <EntityTypeMapping TypeName="SepModel.GiangDay">
               <MappingFragment StoreEntitySet="GiangDay">
                 <ScalarProperty Name="ID_GiangVien" ColumnName="ID_GiangVien" />
-                <ScalarProperty Name="ID_MonHoc" ColumnName="ID_MonHoc" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiangViens">
-            <EntityTypeMapping TypeName="SEP_DTBModel.GiangVien">
+            <EntityTypeMapping TypeName="SepModel.GiangVien">
               <MappingFragment StoreEntitySet="GiangVien">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
                 <ScalarProperty Name="TenGV" ColumnName="TenGV" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Usename" ColumnName="Usename" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="KhoaHocs">
+            <EntityTypeMapping TypeName="SepModel.KhoaHoc">
+              <MappingFragment StoreEntitySet="KhoaHoc">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="Phong" ColumnName="Phong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MonHocs">
-            <EntityTypeMapping TypeName="SEP_DTBModel.MonHoc">
+            <EntityTypeMapping TypeName="SepModel.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaMH" ColumnName="MaMH" />
                 <ScalarProperty Name="TenMH" ColumnName="TenMH" />
                 <ScalarProperty Name="Mota" ColumnName="Mota" />
@@ -516,20 +536,33 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SinhViens">
-            <EntityTypeMapping TypeName="SEP_DTBModel.SinhVien">
+            <EntityTypeMapping TypeName="SepModel.SinhVien">
               <MappingFragment StoreEntitySet="SinhVien">
-                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
-                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
-                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="MSSV" ColumnName="MSSV" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SepModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThamDus">
-            <EntityTypeMapping TypeName="SEP_DTBModel.ThamDu">
+            <EntityTypeMapping TypeName="SepModel.ThamDu">
               <MappingFragment StoreEntitySet="ThamDu">
-                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
-                <ScalarProperty Name="ID_Course" ColumnName="ID_Course" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MSSV" ColumnName="MSSV" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

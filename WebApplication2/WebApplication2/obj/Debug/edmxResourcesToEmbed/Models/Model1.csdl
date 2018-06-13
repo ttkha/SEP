@@ -78,6 +78,16 @@
     <NavigationProperty Name="DiemDanhs" Relationship="Self.FK_DiemDanh_SinhVien" FromRole="SinhVien" ToRole="DiemDanh" />
     <NavigationProperty Name="ThamDus" Relationship="Self.FK_ThamDu_SinhVien" FromRole="SinhVien" ToRole="ThamDu" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="ThamDu">
     <Key>
       <PropertyRef Name="MaSV" />
@@ -193,6 +203,7 @@
     <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
     <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
     <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="ThamDus" EntityType="Self.ThamDu" />
     <AssociationSet Name="FK_BuoiHoc_Course" Association="Self.FK_BuoiHoc_Course">
       <End Role="Course" EntitySet="Courses" />

@@ -21,9 +21,11 @@ namespace WebApplication2.Models
             this.ThamDus = new HashSet<ThamDu>();
         }
     
-        public string MaSV { get; set; }
-        public string Hoten { get; set; }
-        public System.DateTime Ngaysinh { get; set; }
+        public string MSSV { get; set; }
+        public string FullName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public System.DateTime Birthday { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiemDanh> DiemDanhs { get; set; }

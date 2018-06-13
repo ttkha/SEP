@@ -20,12 +20,12 @@ namespace WebApplication2.Models
             this.DiemDanhs = new HashSet<DiemDanh>();
         }
     
-        public int ID { get; set; }
-        public System.DateTime Ngayhoc { get; set; }
-        public int ID_Course { get; set; }
-        public int Buoi_thu { get; set; }
+        public int ID_BH { get; set; }
+        public Nullable<System.DateTime> NgayHoc { get; set; }
+        public string MaKH { get; set; }
+        public Nullable<int> Buoi_thu { get; set; }
     
-        public virtual Course Course { get; set; }
+        public virtual KhoaHoc KhoaHoc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiemDanh> DiemDanhs { get; set; }
     }

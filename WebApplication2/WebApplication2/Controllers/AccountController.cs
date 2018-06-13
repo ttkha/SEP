@@ -9,7 +9,8 @@ namespace WebApplication2.Controllers
 {
     public class AccountController : Controller
     {
-        SEP_DTBEntities1 db = new SEP_DTBEntities1();
+        SepEntities db = new SepEntities();
+        API api = new API();
         // GET: Account
         public ActionResult Login()
         {
@@ -17,19 +18,34 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string username, string password)
+        public async System.Threading.Tasks.Task<ActionResult> Login(string username, string password)
         {
-            var user = db.GiangViens.FirstOrDefault(x => x.Username == username);
-            if (user != null)
+            var checkId = api.Check_Login(username, password);
+            if (checkId != null)
             {
-                if (user.Password.Equals(password))
+                var xz = await api.TestLesson(checkId.data.Id);
+                foreach (var item in xz)
                 {
-                    Session["ID"] = user.ID;
-                    Session["name"] = user.TenGV;
-                    Session["monhoc"] = user.GiangDays.FirstOrDefault(x => x.ID_GiangVien == user.ID).ID_MonHoc;
-                    return RedirectToAction("Index", "Home");
+                    Session["ID"] = item.Name;
                 }
+
+
+                Session["name"] = username;
+                //s  Session["monhoc"] = user.GiangDays.FirstOrDefault(x => x.ID_GiangVien == user.ID).ID_MonHoc;
+                return RedirectToAction("Index", "Home");
             }
+
+            //var user = db.GiangViens.FirstOrDefault(x => x.Username == username);
+            //if (user != null)
+            //{
+            //    if (user.Password.Equals(password))
+            //    {
+            //        Session["ID"] = user.ID;
+            //        Session["name"] = user.TenGV;
+            //        Session["monhoc"] = user.GiangDays.FirstOrDefault(x => x.ID_GiangVien == user.ID).ID_MonHoc;
+            //        return RedirectToAction("Index", "Home");
+            //    }
+            //}
             return View();
         }
 

@@ -12,21 +12,19 @@ namespace WebApplication2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class KhoaHoc
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course()
+        public KhoaHoc()
         {
             this.BuoiHocs = new HashSet<BuoiHoc>();
             this.ThamDus = new HashSet<ThamDu>();
         }
     
-        public int ID { get; set; }
-        public string Ma_lop { get; set; }
-        public int MaMH { get; set; }
+        public string MaKH { get; set; }
+        public string TenKH { get; set; }
+        public string MaMH { get; set; }
         public string Phong { get; set; }
-        public System.DateTime Ngaybatdau { get; set; }
-        public System.DateTime Ngayketthuc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuoiHoc> BuoiHocs { get; set; }
