@@ -1,61 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SEP_DTBModelStoreContainer" CdmEntityContainer="SEP_DTBEntities1">
+  <EntityContainerMapping StorageEntityContainer="SepModelStoreContainer" CdmEntityContainer="SepEntities">
     <EntitySetMapping Name="BuoiHocs">
-      <EntityTypeMapping TypeName="SEP_DTBModel.BuoiHoc">
+      <EntityTypeMapping TypeName="SepModel.BuoiHoc">
         <MappingFragment StoreEntitySet="BuoiHoc">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Ngayhoc" ColumnName="Ngayhoc" />
-          <ScalarProperty Name="ID_Course" ColumnName="ID_Course" />
+          <ScalarProperty Name="ID_BH" ColumnName="ID_BH" />
+          <ScalarProperty Name="NgayHoc" ColumnName="NgayHoc" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="Buoi_thu" ColumnName="Buoi_thu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="SEP_DTBModel.Course">
-        <MappingFragment StoreEntitySet="Course">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
-          <ScalarProperty Name="MaMH" ColumnName="MaMH" />
-          <ScalarProperty Name="Phong" ColumnName="Phong" />
-          <ScalarProperty Name="Ngaybatdau" ColumnName="Ngaybatdau" />
-          <ScalarProperty Name="Ngayketthuc" ColumnName="Ngayketthuc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DiemDanhs">
-      <EntityTypeMapping TypeName="SEP_DTBModel.DiemDanh">
+      <EntityTypeMapping TypeName="SepModel.DiemDanh">
         <MappingFragment StoreEntitySet="DiemDanh">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+          <ScalarProperty Name="MSSV" ColumnName="MSSV" />
           <ScalarProperty Name="ID_BuoiHoc" ColumnName="ID_BuoiHoc" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GiangDays">
-      <EntityTypeMapping TypeName="SEP_DTBModel.GiangDay">
+      <EntityTypeMapping TypeName="SepModel.GiangDay">
         <MappingFragment StoreEntitySet="GiangDay">
           <ScalarProperty Name="ID_GiangVien" ColumnName="ID_GiangVien" />
-          <ScalarProperty Name="ID_MonHoc" ColumnName="ID_MonHoc" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GiangViens">
-      <EntityTypeMapping TypeName="SEP_DTBModel.GiangVien">
+      <EntityTypeMapping TypeName="SepModel.GiangVien">
         <MappingFragment StoreEntitySet="GiangVien">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MaGV" ColumnName="MaGV" />
           <ScalarProperty Name="TenGV" ColumnName="TenGV" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Usename" ColumnName="Usename" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="KhoaHocs">
+      <EntityTypeMapping TypeName="SepModel.KhoaHoc">
+        <MappingFragment StoreEntitySet="KhoaHoc">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+          <ScalarProperty Name="Phong" ColumnName="Phong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MonHocs">
-      <EntityTypeMapping TypeName="SEP_DTBModel.MonHoc">
+      <EntityTypeMapping TypeName="SepModel.MonHoc">
         <MappingFragment StoreEntitySet="MonHoc">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MaMH" ColumnName="MaMH" />
           <ScalarProperty Name="TenMH" ColumnName="TenMH" />
           <ScalarProperty Name="Mota" ColumnName="Mota" />
@@ -63,16 +61,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SinhViens">
-      <EntityTypeMapping TypeName="SEP_DTBModel.SinhVien">
+      <EntityTypeMapping TypeName="SepModel.SinhVien">
         <MappingFragment StoreEntitySet="SinhVien">
-          <ScalarProperty Name="MaSV" ColumnName="MaSV" />
-          <ScalarProperty Name="Hoten" ColumnName="Hoten" />
-          <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+          <ScalarProperty Name="MSSV" ColumnName="MSSV" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="SEP_DTBModel.sysdiagram">
+      <EntityTypeMapping TypeName="SepModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -83,11 +83,11 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ThamDus">
-      <EntityTypeMapping TypeName="SEP_DTBModel.ThamDu">
+      <EntityTypeMapping TypeName="SepModel.ThamDu">
         <MappingFragment StoreEntitySet="ThamDu">
-          <ScalarProperty Name="MaSV" ColumnName="MaSV" />
-          <ScalarProperty Name="ID_Course" ColumnName="ID_Course" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MSSV" ColumnName="MSSV" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
