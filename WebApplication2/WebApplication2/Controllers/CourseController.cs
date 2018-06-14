@@ -53,16 +53,31 @@ namespace WebApplication2.Controllers
 
         public ActionResult ListBuoi(string id)
         {
-            //    int ID = int.Parse(id);
-            //  var  = db.BuoiHocs.Where(x => x.ID_Course == id);
-            return View();
+              var model = db.BuoiHocs.Where(x => x.MaKH == id);
+            return View(model);
         }
 
         public ActionResult ListDiemDanh(string id)
         {
             int ID = int.Parse(id);
-            //    var  = db.DiemDanhs.Where(x => x.ID_BuoiHoc==ID);
-            return View();
+            var model = db.DiemDanhs.Where(x => x.ID_BuoiHoc==ID);
+            return View(model);
+        }
+
+        public ActionResult Change(string id)
+        {
+            var ID = int.Parse(id);
+            var ID_Buoi = db.DiemDanhs.FirstOrDefault(x => x.ID == ID);
+            if (ID_Buoi.status == true)
+            {
+                ID_Buoi.status = false;
+            }
+            else
+            {
+                ID_Buoi.status = true;
+            }
+            db.SaveChanges();
+            return RedirectToAction("ListDiemDanh", new { id = ID_Buoi.ID_BuoiHoc });
         }
     }
 }
