@@ -53,14 +53,16 @@ namespace WebApplication2.Controllers
 
         public ActionResult ListBuoi(string id)
         {
-              var model = db.BuoiHocs.Where(x => x.MaKH == id);
+            var model = db.BuoiHocs.Where(x => x.MaKH == id);
             return View(model);
         }
 
         public ActionResult ListDiemDanh(string id)
         {
             int ID = int.Parse(id);
-            var model = db.DiemDanhs.Where(x => x.ID_BuoiHoc==ID);
+            var model = db.DiemDanhs.Where(x => x.ID_BuoiHoc == ID);
+            var makh = db.BuoiHocs.FirstOrDefault(x => x.ID_BH == ID).MaKH;
+            ViewBag.BuoiHoc = new SelectList(db.BuoiHocs.Where(x => x.MaKH == makh), "ID_BH", "Buoi_thu");
             return View(model);
         }
 
@@ -78,6 +80,11 @@ namespace WebApplication2.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("ListDiemDanh", new { id = ID_Buoi.ID_BuoiHoc });
+        }
+        [HttpPost]
+        public ActionResult edit(string Buoithu)
+        {
+            return RedirectToAction("ListDiemDanh", new { id = Buoithu });
         }
     }
 }

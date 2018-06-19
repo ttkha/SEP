@@ -21,14 +21,26 @@
                     <h4 class="card-title">Danh Sách Điểm Danh Sinh Viên</h4>
                     @*<h6 class="card-subtitle">Data table example</h6>*@
                     <div class="table-responsive m-t-40">
+@using (Html.BeginForm("edit", "Course", FormMethod.Post))
+{
+                    <div style="width:450px; height:30px">
+                        <div style="width:200px; float:left">
+                            @Html.DropDownList("Buoithu", (SelectList)ViewBag.BuoiHoc, string.Empty, new { @class = "form-control" })
+                        </div>
+                        <div style="width:200px;float:right">
+                            <input type="submit" value="Change" style="height:35px" />
+                        </div>
+                        </div>
+}
                         <table id="myTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     @*<th>Tên Môn Học</th>*@
                                     <th>MSSV</th>
-                                    <th>Tên Sinh Viên</th>
+                                    <th>Họ</th>
+                                    <th>Tên</th>
                                     <th>Ngày Học</th>
-                                    <th>Buổi Thứ</th>
+                                    @*<th>Buổi Thứ</th>*@
                                     <th>Trạng Thái</th>
                                     <th></th>
                                 </tr>
@@ -44,25 +56,28 @@
                                             @Html.DisplayFor(modelItem => item.MSSV)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.SinhVien.FullName)
+                                            @Html.DisplayFor(modelItem => item.SinhVien.LastName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.BuoiHoc.NgayHoc)
+                                            @Html.DisplayFor(modelItem => item.SinhVien.FirstName)
                                         </td>
                                         <td>
+                                            @Convert.ToDateTime(item.BuoiHoc.NgayHoc).ToString("dd/MM/yyyy")
+                                        </td>
+                                        @*<td>
                                             @Html.DisplayFor(modelItem => item.BuoiHoc.Buoi_thu)
-                                        </td>
+                                        </td>*@
                                         
                                             @if (item.status == true)
                                             {
                                               <td>
-                                                  di hoc
+                                                 Đi Học
                                               </td>  
                                             }
                                             else
                                             {
                                                 <td>
-                                                    vang hoc
+                                                    Vắng Học
                                                 </td>
                                             }
                                         <td>
