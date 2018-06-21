@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<WebApplication2.Models.KhoaHoc>
 
 @{
+   
     ViewBag.Title = "Danh Sách Lớp";
 }
 <head>
@@ -25,7 +26,7 @@
                                 <tr>
                                     <th>Mã Khóa Học</th>
                                     <th>Tên Khóa Học</th>
-                                    <th>Phòng Học</th>
+                                    @*<th>Phòng Học</th>*@
                                     @*<th>Ngày Bắt Đầu</th>
                                     <th>Ngày Kết Thúc</th>*@
                                 </tr>
@@ -33,21 +34,27 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            <a href="~/Course/ListDiemDanh/1">@Html.DisplayFor(modelItem => item.MaKH)</a>
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TenKH)
-                                            <a href="~/Course/ListStudent/@item.MaKH">
-                                                <img src="~/Content/account-multiple.png" /></a>
-                                            <a href="~/Course/ListBuoi/@item.MaKH">
-                                                <img src="~/Content/calendar-multiple-check.png" /> </a>
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Phong)
-                                        </td>
-                                    </tr>
+                                    var a = item.BuoiHocs.OrderByDescending(y=>y.ID_BH).FirstOrDefault().ID_BH;
+                                       <tr>
+                                            <td>
+                                                
+                                                <a href="~/Course/ListDiemDanh/@a">
+                                                @Html.DisplayFor(modelItem => item.MaKH)</a>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenKH)
+                                                <a href="~/Course/DIEMDANH/@item.MaKH">
+                                                    <img src="~/Content/account-multiple.png" />
+                                                </a>
+                                                <a href="~/Course/ListBuoi/@item.MaKH">
+                                                    <img src="~/Content/calendar-multiple-check.png" />
+                                                </a>
+                                            </td>
+                                            @*<td>
+                                                @Html.DisplayFor(modelItem => item.Phong)
+                                            </td>*@
+                                        </tr>
+                                    
                                 }
                             </tbody>
                         </table>

@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class AccountController : Controller
     {
-        SepEntities db = new SepEntities();
+        sep21t22Entities1 db = new sep21t22Entities1();
         API api = new API();
         // GET: Account
         public ActionResult Login()
@@ -24,6 +24,8 @@ namespace WebApplication2.Controllers
             if (checkId != null)
             {
                 var xz = await api.TestLesson(checkId.data.Id);
+                Session["MaGV"] = checkId.data.Id;
+
                 foreach (var item in xz)
                 {
                     Session["ID"] = item.Name;

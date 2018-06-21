@@ -14,7 +14,7 @@ namespace WebApplication2.DAL
         public static SqlCommand cmd;
         public static SqlDataAdapter da;
 
-        static string strConection = "data source=DESKTOP-CNDGSBR\\SQLEXPRESS;initial catalog=Sep;user id=sa;password=123456;MultipleActiveResultSets=True;";
+        static string strConection = "data source=125.234.238.137,8082;initial catalog=sep21t22;user id=sep21t22;password=heavyink;MultipleActiveResultSets=True;";
 
         public SqlConnection OpenDb()
         {

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebApplication2.Models.ThamDu>
+
+@{
+    ViewBag.Title = "DIEMDANH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/Content/Newview/dist/css/style.min.css" rel="stylesheet">
+</head>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            @*<div class="panel-heading">
+                  Các Khóa Học
+                </div>*@
+            <!-- /.panel-heading -->
+            <!--  NewTable-->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Điểm Danh Sinh Viên</h4>
+                    @*<h6 class="card-subtitle">Data table example</h6>*@
+                    <div class="table-responsive m-t-40">
+                      @*@using (Html.BeginForm("DIEMDANH", "ThamDu", FormMethod.Post))
+                      {*@
+                        <form action="~/Course/DIEMDANHS" method="post">
+                            <table id="myTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <th>MSSV</th>
+                                        <th>Họ</th>
+                                        <th>Tên</th>
+                                        <th>Trạng Thái</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MSSV)
+                                                <input type="text" name="MaKh" value="@item.MaKH" hidden/>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SinhVien.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SinhVien.FirstName)
+                                            </td>
+                                            <td style="text-align:center">
+                                                <input type="checkbox" name="status">
+                                            </td>
+
+
+
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            <div style="text-align:center">
+                                <input type="submit" value="Save">
+                            </div>
+                        </form>
+
+                </div>
+            </div>
+
+            <!--  NewTable-->
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/Newview/assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="~/Content/Newview//assets/node_modules/popper/popper.min.js"></script>
+<script src="~/Content/Newview//assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="~/Content/Newview/dist/js/perfect-scrollbar.jquery.min.js"></script>
+<!--Wave Effects -->
+<script src="~/Content/Newview/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="~/Content/Newview/dist/js/sidebarmenu.js"></script>
+<!--stickey kit -->
+<script src="~/Content/Newview/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="~/Content/Newview/assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+<!--Custom JavaScript -->
+<script src="~/Content/Newview/dist/js/custom.min.js"></script>
+<!-- This is data table -->
+<script src="~/Content/Newview/assets/node_modules/datatables/jquery.dataTables.min.js"></script>
+
+

@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class MonHocController : Controller
     {
-        SepEntities db = new SepEntities();
+        sep21t22Entities1 db = new sep21t22Entities1();
         // GET: MonHoc
         public ActionResult Index()
         {

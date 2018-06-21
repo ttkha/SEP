@@ -39,19 +39,17 @@
                                     <th>MSSV</th>
                                     <th>Họ</th>
                                     <th>Tên</th>
-                                    <th>Ngày Học</th>
+                                    @*<th>Ngày Học</th>*@
                                     @*<th>Buổi Thứ</th>*@
                                     <th>Trạng Thái</th>
-                                    <th></th>
+                                    @*<th></th>*@
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        @*<td>
-                                            @Html.DisplayFor(modelItem => item.BuoiHoc.KhoaHoc.MonHoc.TenMH)
-                                        </td>*@
+                                      
                                         <td>
                                             @Html.DisplayFor(modelItem => item.MSSV)
                                         </td>
@@ -61,28 +59,28 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.SinhVien.FirstName)
                                         </td>
-                                        <td>
-                                            @Convert.ToDateTime(item.BuoiHoc.NgayHoc).ToString("dd/MM/yyyy")
-                                        </td>
-                                        @*<td>
-                                            @Html.DisplayFor(modelItem => item.BuoiHoc.Buoi_thu)
-                                        </td>*@
+                                     
                                         
                                             @if (item.status == true)
                                             {
-                                              <td>
-                                                 Đi Học
+                                              <td style="text-align:center">
+                                                  
+                                                <a href="~/Course/Change/@item.ID">
+                                                  <img src="~/Content/images/p.png" style="width:30px;height:30px;" />
+                                                    </a>
                                               </td>  
                                             }
                                             else
                                             {
-                                                <td>
-                                                    Vắng Học
-                                                </td>
+                                                <td style="text-align:center">
+                                                    <a href="~/Course/Change/@item.ID">
+                                                        <img src="~/Content/images/f.png" style="width:30px;height:30px" />
+                                                        </a>
+</td>
                                             }
-                                        <td>
+                                        @*<td>
                                             @Html.ActionLink("Status","Change",new { id = item.ID})
-                                        </td>
+                                        </td>*@
                                     </tr>
                                 }
                             </tbody>

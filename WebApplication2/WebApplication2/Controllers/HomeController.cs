@@ -8,7 +8,7 @@ namespace WebApplication2.Controllers
 {
     public class HomeController : Controller
     {
-        SepEntities db = new SepEntities();
+        sep21t22Entities1 db = new sep21t22Entities1();
         public API api = new API();
         public ActionResult Index()
         {

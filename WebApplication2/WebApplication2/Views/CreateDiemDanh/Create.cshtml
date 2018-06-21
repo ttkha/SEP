@@ -1,0 +1,39 @@
+﻿@model WebApplication2.Models.Item
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Item</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+   
+            <div>
+                @Html.LabelFor(model => model.AvailableColours)
+                @for (var i = 0; i < Model.AvailableColours.Count; i++)
+                {
+
+                    @Html.TextBoxFor(m => Model.AvailableColours[i].Id)
+                    @Html.CheckBoxFor(m => Model.AvailableColours[i].checkbox)
+
+                }
+            </div>
+            <input type="submit" value="Submit" />
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

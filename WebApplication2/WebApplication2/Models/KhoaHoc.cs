@@ -25,6 +25,7 @@ namespace WebApplication2.Models
         public string TenKH { get; set; }
         public string MaMH { get; set; }
         public string Phong { get; set; }
+        public string Ma { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuoiHoc> BuoiHocs { get; set; }
