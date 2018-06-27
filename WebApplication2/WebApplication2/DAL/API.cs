@@ -14,7 +14,7 @@ namespace WebApplication2
 {
     public class API
     {
-        sep21t22Entities1 db = new sep21t22Entities1();
+        SepEntities db = new SepEntities();
         Data da = new Data();
         private string urlAddress = "https://entool.azurewebsites.net/SEP21";
         private string urlConnect;
@@ -170,23 +170,23 @@ namespace WebApplication2
             }
             return null;
         }
-        public async Task<List<Lessons.Lesson>> TestLesson1(string id)
-        {
-            urlConnect = urlAddress + "/GetCourses?lecturerID={0}";
-            urlConnect = string.Format(urlConnect, id);
-            data = Url(urlConnect);
-            if (data != "")
-            {
-                //parse data json
-                var coure = new List<Lessons.Lesson>();
+        //public async Task<List<Lessons.Lesson>> TestLesson1(string id)
+        //{
+        //    urlConnect = urlAddress + "/GetCourses?lecturerID={0}";
+        //    urlConnect = string.Format(urlConnect, id);
+        //    data = Url(urlConnect);
+        //    if (data != "")
+        //    {
+        //        //parse data json
+        //        var coure = new List<Lessons.Lesson>();
 
-                //get data json type array
-                Lessons Courses = JsonConvert.DeserializeObject<Lessons>(data);
+        //        //get data json type array
+        //        Lessons Courses = JsonConvert.DeserializeObject<Lessons>(data);
 
-                return coure;
-            }
-            return null;
-        }
+        //        return coure;
+        //    }
+        //    return null;
+        //}
 
     }
 }

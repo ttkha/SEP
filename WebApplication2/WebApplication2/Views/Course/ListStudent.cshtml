@@ -2,7 +2,7 @@
 @model IEnumerable<WebApplication2.Models.ThamDu>
 @{
     ViewBag.Title = "ListStudent";
-
+    string maKh = Session["MaKH"].ToString();
 }
 
 
@@ -20,11 +20,9 @@
                     <h4 class="card-title">Danh Sách Sinh Viên</h4>
                     @*<h6 class="card-subtitle">Data table example</h6>*@
                     <div class="table-responsive m-t-40">
-                        @*<input type="submit" value="DiemDanh" style="height:35px" />*@ 
-                      
-                        
-
-
+                        <a href="~/Course/DIEMDANH/@maKh">
+                        <input type="submit" value="Điểm Danh" style="height:35px" /> 
+                            </a>
                         <table id="myTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="sep21t22ModelStoreContainer" CdmEntityContainer="sep21t22Entities1">
+  <EntityContainerMapping StorageEntityContainer="SepModelStoreContainer" CdmEntityContainer="SepEntities">
     <EntitySetMapping Name="BuoiHocs">
-      <EntityTypeMapping TypeName="sep21t22Model.BuoiHoc">
+      <EntityTypeMapping TypeName="SepModel.BuoiHoc">
         <MappingFragment StoreEntitySet="BuoiHoc">
           <ScalarProperty Name="ID_BH" ColumnName="ID_BH" />
           <ScalarProperty Name="NgayHoc" ColumnName="NgayHoc" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DiemDanhs">
-      <EntityTypeMapping TypeName="sep21t22Model.DiemDanh">
+      <EntityTypeMapping TypeName="SepModel.DiemDanh">
         <MappingFragment StoreEntitySet="DiemDanh">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MSSV" ColumnName="MSSV" />
@@ -22,7 +22,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GiangDays">
-      <EntityTypeMapping TypeName="sep21t22Model.GiangDay">
+      <EntityTypeMapping TypeName="SepModel.GiangDay">
         <MappingFragment StoreEntitySet="GiangDay">
           <ScalarProperty Name="ID_GiangVien" ColumnName="ID_GiangVien" />
           <ScalarProperty Name="MaMH" ColumnName="MaMH" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GiangViens">
-      <EntityTypeMapping TypeName="sep21t22Model.GiangVien">
+      <EntityTypeMapping TypeName="SepModel.GiangVien">
         <MappingFragment StoreEntitySet="GiangVien">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -42,7 +42,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="KhoaHocs">
-      <EntityTypeMapping TypeName="sep21t22Model.KhoaHoc">
+      <EntityTypeMapping TypeName="SepModel.KhoaHoc">
         <MappingFragment StoreEntitySet="KhoaHoc">
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="TenKH" ColumnName="TenKH" />
@@ -53,7 +53,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MonHocs">
-      <EntityTypeMapping TypeName="sep21t22Model.MonHoc">
+      <EntityTypeMapping TypeName="SepModel.MonHoc">
         <MappingFragment StoreEntitySet="MonHoc">
           <ScalarProperty Name="MaMH" ColumnName="MaMH" />
           <ScalarProperty Name="TenMH" ColumnName="TenMH" />
@@ -62,7 +62,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SinhViens">
-      <EntityTypeMapping TypeName="sep21t22Model.SinhVien">
+      <EntityTypeMapping TypeName="SepModel.SinhVien">
         <MappingFragment StoreEntitySet="SinhVien">
           <ScalarProperty Name="MSSV" ColumnName="MSSV" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -73,7 +73,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="sep21t22Model.sysdiagram">
+      <EntityTypeMapping TypeName="SepModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -84,7 +84,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ThamDus">
-      <EntityTypeMapping TypeName="sep21t22Model.ThamDu">
+      <EntityTypeMapping TypeName="SepModel.ThamDu">
         <MappingFragment StoreEntitySet="ThamDu">
           <ScalarProperty Name="MSSV" ColumnName="MSSV" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -92,31 +92,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="checkCourse" FunctionName="sep21t22Model.Store.checkCourse" />
-    <FunctionImportMapping FunctionImportName="checkLesson" FunctionName="sep21t22Model.Store.checkLesson" />
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="sep21t22Model.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="sep21t22Model.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="sep21t22Model.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="sep21t22Model.Store.sp_helpdiagramdefinition">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="sep21t22Model.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="sep21t22Model.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="sep21t22Model.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="sep21t22Model.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="sep21t22Model.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

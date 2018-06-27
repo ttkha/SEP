@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sep21t22Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BuoiHoc">
           <Key>
             <PropertyRef Name="ID_BH" />
@@ -185,44 +185,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="checkCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MAKH" Type="nchar" Mode="In" />
-        </Function>
-        <Function Name="checkLesson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MAMH" Type="nchar" Mode="In" />
-        </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="sep21t22ModelStoreContainer">
+        <EntityContainer Name="SepModelStoreContainer">
           <EntitySet Name="BuoiHoc" EntityType="Self.BuoiHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiemDanh" EntityType="Self.DiemDanh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiangDay" EntityType="Self.GiangDay" Schema="dbo" store:Type="Tables" />
@@ -269,7 +232,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="sep21t22Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SepModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BuoiHoc">
           <Key>
             <PropertyRef Name="ID_BH" />
@@ -466,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="sep21t22Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SepEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BuoiHocs" EntityType="Self.BuoiHoc" />
           <EntitySet Name="DiemDanhs" EntityType="Self.DiemDanh" />
           <EntitySet Name="GiangDays" EntityType="Self.GiangDay" />
@@ -508,62 +471,15 @@
             <End Role="SinhVien" EntitySet="SinhViens" />
             <End Role="ThamDu" EntitySet="ThamDus" />
           </AssociationSet>
-          <FunctionImport Name="checkCourse" ReturnType="Collection(Int32)">
-            <Parameter Name="MAKH" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="checkLesson" ReturnType="Collection(Int32)">
-            <Parameter Name="MAMH" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(sep21t22Model.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(sep21t22Model.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="sep21t22ModelStoreContainer" CdmEntityContainer="sep21t22Entities1">
+        <EntityContainerMapping StorageEntityContainer="SepModelStoreContainer" CdmEntityContainer="SepEntities">
           <EntitySetMapping Name="BuoiHocs">
-            <EntityTypeMapping TypeName="sep21t22Model.BuoiHoc">
+            <EntityTypeMapping TypeName="SepModel.BuoiHoc">
               <MappingFragment StoreEntitySet="BuoiHoc">
                 <ScalarProperty Name="ID_BH" ColumnName="ID_BH" />
                 <ScalarProperty Name="NgayHoc" ColumnName="NgayHoc" />
@@ -573,7 +489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DiemDanhs">
-            <EntityTypeMapping TypeName="sep21t22Model.DiemDanh">
+            <EntityTypeMapping TypeName="SepModel.DiemDanh">
               <MappingFragment StoreEntitySet="DiemDanh">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MSSV" ColumnName="MSSV" />
@@ -583,7 +499,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiangDays">
-            <EntityTypeMapping TypeName="sep21t22Model.GiangDay">
+            <EntityTypeMapping TypeName="SepModel.GiangDay">
               <MappingFragment StoreEntitySet="GiangDay">
                 <ScalarProperty Name="ID_GiangVien" ColumnName="ID_GiangVien" />
                 <ScalarProperty Name="MaMH" ColumnName="MaMH" />
@@ -592,7 +508,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiangViens">
-            <EntityTypeMapping TypeName="sep21t22Model.GiangVien">
+            <EntityTypeMapping TypeName="SepModel.GiangVien">
               <MappingFragment StoreEntitySet="GiangVien">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -603,7 +519,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhoaHocs">
-            <EntityTypeMapping TypeName="sep21t22Model.KhoaHoc">
+            <EntityTypeMapping TypeName="SepModel.KhoaHoc">
               <MappingFragment StoreEntitySet="KhoaHoc">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
@@ -614,7 +530,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MonHocs">
-            <EntityTypeMapping TypeName="sep21t22Model.MonHoc">
+            <EntityTypeMapping TypeName="SepModel.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
                 <ScalarProperty Name="MaMH" ColumnName="MaMH" />
                 <ScalarProperty Name="TenMH" ColumnName="TenMH" />
@@ -623,7 +539,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SinhViens">
-            <EntityTypeMapping TypeName="sep21t22Model.SinhVien">
+            <EntityTypeMapping TypeName="SepModel.SinhVien">
               <MappingFragment StoreEntitySet="SinhVien">
                 <ScalarProperty Name="MSSV" ColumnName="MSSV" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -634,7 +550,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="sep21t22Model.sysdiagram">
+            <EntityTypeMapping TypeName="SepModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -645,7 +561,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThamDus">
-            <EntityTypeMapping TypeName="sep21t22Model.ThamDu">
+            <EntityTypeMapping TypeName="SepModel.ThamDu">
               <MappingFragment StoreEntitySet="ThamDu">
                 <ScalarProperty Name="MSSV" ColumnName="MSSV" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -653,32 +569,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="checkCourse" FunctionName="sep21t22Model.Store.checkCourse" />
-          <FunctionImportMapping FunctionImportName="checkLesson" FunctionName="sep21t22Model.Store.checkLesson" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="sep21t22Model.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="sep21t22Model.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="sep21t22Model.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="sep21t22Model.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="sep21t22Model.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="sep21t22Model.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="sep21t22Model.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="sep21t22Model.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="sep21t22Model.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

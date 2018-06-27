@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
@@ -10,7 +11,7 @@ namespace WebApplication2.Controllers
     public class CourseController : Controller
     {
         public API api = new API();
-        sep21t22Entities1 db = new sep21t22Entities1();
+        SepEntities db = new SepEntities();
         public static string makhdiemdanh = "";
         // GET: Student
         public ActionResult Index(string id)
@@ -25,7 +26,8 @@ namespace WebApplication2.Controllers
         // danh sach sinh vien vaf danh sach bang tham du
         public ActionResult ListStudent(string id)
         {
-          //  ReturnmaKH(id);
+           Session["MaKH"] = id ;
+            //  ReturnmaKH(id);
             //  int ID = int.Parse(id);
             var model = db.ThamDus.Where(x => x.MaKH == id);
             if (model.Count() == 0)
@@ -97,8 +99,7 @@ namespace WebApplication2.Controllers
         /// ----------------------------------------diem danh thu cong
         //tao buoi ngay luc chon diem danh
         public int taobuoi(string id)
-        {
-          
+        {         
                 BuoiHoc bhoc = new BuoiHoc();
                 bhoc.NgayHoc = Convert.ToDateTime(DateTime.Now);
                 bhoc.Buoi_thu = db.BuoiHocs.Where(x => x.MaKH == id).Count() + 1;       
@@ -109,76 +110,71 @@ namespace WebApplication2.Controllers
             return ii;
         }
 
-       
+       // list danh sach MSSV theo khoa hc
         [HttpGet]
         public ActionResult DIEMDANH(string id)
         {
-           
+
+            Session["MaKH"] = id;
             var list = db.ThamDus.Where(x => x.MaKH == id).ToList();
             
             return View(list);
 
         }
-
+        // xu li diem dnah thu cong
         [HttpPost]
-        public ActionResult DIEMDANHS(string MaKh)
+        public ActionResult Ed(string bhoc)
         {
+            string maGV = Session["MaGV"] as string;
+            string maKh = Session["MaKH"] as string;
+            // Tao buoi hoc
+          int bh =  taobuoi(maKh);
+            //---------------------------
 
-            var isa = taobuoi(MaKh);
-            //int ids = taobuoi(id);
-            //var list = db.ThamDus.Where(x => x.MaKH == MaKh).ToList();
-            //foreach (var dd in list)
-            //{
-            //   
-            //    DiemDanh ddanh = new DiemDanh();
-            //    ddanh.MSSV = dd.MSSV;
-            //    ddanh.status = checked;
-            //    ddanh.ID_BuoiHoc = isa;
-                //    db.DiemDanhs.Add(ddanh);
-                //    db.SaveChanges();
-              
-                //}
-            
-                return View();
-
-        }
-        public ActionResult ChangeCreate(string mssv, string makh, bool? status)
-        {
-            var idd = mssv;
-            //var ID_DD = db.DiemDanhs.FirstOrDefault(x => x.ID == ID);
-            //if (ID_DD.status == true)
-            //{
-            //    ID_DD.status = false;
-            //}
-            //else
-            //{
-            //    ID_DD.status = true;
-            //}
-            //db.SaveChanges();
-            return RedirectToAction("ListDiemDanh", new { id = ""});
-        }
-
-        // Diem danh thu congs
-        [HttpGet]
-        public ActionResult DiemDanhthucong(string makh) // id truyen ma khoa hoc dang chon
-        {
-            int ids = taobuoi(makh);
-            var list = db.ThamDus.Where(x => x.MaKH == makh).ToList();
-            foreach (var dd in list)
+            var Fch = Request.Form.AllKeys.Where(k => k != "bhoc");
+            //string day = DateTime.Now.DayOfWeek.ToString();
+            //var query = (from pro in db.BangBuoiHocs where pro.maKH == maKh && pro.day == day select pro.maBH).FirstOrDefault();
+            string date = DateTime.Now.ToString("yyyy/MM/dd");
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            //CreateSessionID create = new CreateSessionID();
+            //int getID = (create.GetLastID("DiemDanh", "sessionID", maKh) + 1);
+          
+            foreach (var fea in Fch)
             {
-                //  var makh
-                DiemDanh ddanh = new DiemDanh();
-                ddanh.MSSV = dd.MSSV;
-                ddanh.status = false;
-                ddanh.ID_BuoiHoc = ids;
-                db.DiemDanhs.Add(ddanh);
-                db.SaveChanges();
-                //   db.Dispose();
+                try
+                {
+                    if (fea.Trim().Length == 7)
+                    {
+                        DiemDanh dd = new DiemDanh();
+                        bool stt = Request.Form[fea.Trim()] != "false";
+                        dd.ID_BuoiHoc = bh;
+                        dd.MSSV = fea.Trim();
+                        dd.status = stt;
+                        db.DiemDanhs.Add(dd);
+                        db.SaveChanges();
+                    }
+                   
+                }
+                catch (Exception)
+                {
+
+                }
+               
             }
 
 
-            return View(list);
-        }
 
+            //var monhoc = connect.TestCourse(maGV);
+
+
+            var idbt = db.BuoiHocs.Where(x => x.ID_BH == bh).FirstOrDefault();
+            string ids = idbt.Buoi_thu.ToString();
+            //ViewBag.Subject = monhoc;
+            return RedirectToAction("ListDiemDanh", new RouteValueDictionary(
+             new { controller = "Course", action = "ListDiemDanh", id = ids }));
+   
+            //return View();
+        }
+     
     }
 }

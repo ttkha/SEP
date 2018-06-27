@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="13e16f7ba5664d8786f28ea55455809f" Name="Diagram1">
-        <EntityTypeShape EntityType="sep21t22Model.BuoiHoc" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.DiemDanh" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.GiangDay" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.GiangVien" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.KhoaHoc" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.MonHoc" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.SinhVien" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.sysdiagram" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sep21t22Model.ThamDu" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="sep21t22Model.FK_BuoiHoc_KhoaHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_DiemDanh_BuoiHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_DiemDanh_SinhVien" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_GiangDay_GiangVien" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_GiangDay_MonHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_KhoaHoc_MonHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_ThamDu_KhoaHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="sep21t22Model.FK_ThamDu_SinhVien" ManuallyRouted="false" />
+      <Diagram DiagramId="baf0351445db4675aa19da51e6864b36" Name="Diagram1">
+        <EntityTypeShape EntityType="SepModel.BuoiHoc" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.DiemDanh" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.GiangDay" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.GiangVien" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.KhoaHoc" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.MonHoc" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.SinhVien" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SepModel.ThamDu" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="SepModel.FK_BuoiHoc_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_DiemDanh_BuoiHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_DiemDanh_SinhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_GiangDay_GiangVien" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_GiangDay_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_KhoaHoc_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_ThamDu_KhoaHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SepModel.FK_ThamDu_SinhVien" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

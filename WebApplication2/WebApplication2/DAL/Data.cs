@@ -12,12 +12,12 @@ namespace WebApplication2.DAL
 {
     public class Data
     {
-        sep21t22Entities1 db = new sep21t22Entities1();
+        SepEntities db = new SepEntities();
         Utility ut = new Utility();
         SqlCommand cmd;
-        SqlDataAdapter sda;
-        SqlCommandBuilder scd;
-        static string strConection = "data source=125.234.238.137,8082;initial catalog=sep21t22;user id=sep21t22;password=heavyink;MultipleActiveResultSets=True;";
+        //SqlDataAdapter sda;
+        //SqlCommandBuilder scd;
+        static string strConection = "data source=DESKTOP-CNDGSBR\\SQLEXPRESS;initial catalog=Sep;user id=sa;password=123456;MultipleActiveResultSets=True;";
         SqlConnection conn = new SqlConnection(strConection);
         public async Task<string> InsertLesson(MonHoc lesson)
         {
@@ -27,7 +27,7 @@ namespace WebApplication2.DAL
                 await db.SaveChangesAsync();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -46,7 +46,7 @@ namespace WebApplication2.DAL
                 await db.SaveChangesAsync();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
