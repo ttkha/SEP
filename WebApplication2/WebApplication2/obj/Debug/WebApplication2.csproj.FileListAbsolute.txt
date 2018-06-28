@@ -450,3 +450,5 @@ C:\Users\Kha Tran\Desktop\SEP 27.6.2018\WebApplication2\WebApplication2\bin\Syst
 C:\Users\Kha Tran\Desktop\SEP 27.6.2018\WebApplication2\WebApplication2\bin\System.Web.WebPages.Razor.xml
 C:\Users\Kha Tran\Desktop\SEP 27.6.2018\WebApplication2\WebApplication2\bin\Antlr3.Runtime.pdb
 C:\Users\Kha Tran\Desktop\SEP 27.6.2018\WebApplication2\WebApplication2\bin\Newtonsoft.Json.xml
+C:\Users\Kha Tran\Desktop\SEP 27.6.2018\WebApplication2\WebApplication2\bin\EPPlus.dll
+C:\Users\Kha Tran\Desktop\SEP 27.6.2018\WebApplication2\WebApplication2\bin\EPPlus.xml

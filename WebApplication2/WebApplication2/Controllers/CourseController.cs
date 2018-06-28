@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,12 +66,18 @@ namespace WebApplication2.Controllers
 
         public ActionResult ListDiemDanh(string id)
         {
-         
+            Session["BH"] = id;
+            //string ids = Session["ID_BH"].ToString();
+            //string ids = id;
             int ID = int.Parse(id);
             var model = db.DiemDanhs.Where(x => x.ID_BuoiHoc == ID);
             var makh = db.BuoiHocs.FirstOrDefault(x => x.ID_BH == ID).MaKH;
             ViewBag.BuoiHoc = new SelectList(db.BuoiHocs.OrderByDescending(y=> y.ID_BH).Where(x => x.MaKH == makh), "ID_BH", "Buoi_thu");
-           
+
+            //var query = (from pro in db.DiemDanhs where pro.ID_BuoiHoc == ID select pro).ToList();
+            ViewBag.Date = db.BuoiHocs.Where(x => x.MaKH == makh).ToList();
+
+
             return View(model);
         }
         //change trang thai buoi diem danh
@@ -129,6 +136,9 @@ namespace WebApplication2.Controllers
             string maKh = Session["MaKH"] as string;
             // Tao buoi hoc
           int bh =  taobuoi(maKh);
+
+
+
             //---------------------------
 
             var Fch = Request.Form.AllKeys.Where(k => k != "bhoc");
@@ -175,6 +185,77 @@ namespace WebApplication2.Controllers
    
             //return View();
         }
-     
+
+
+        //Export
+        [HttpGet]
+        public void ExportToExcel(string idss)
+        {
+             
+            //int sessionex = int.Parse(Session["SessionExcel"].ToString());
+            int idnh = int.Parse(idss);
+            List<DiemDanh> diemDanh = db.DiemDanhs.Where(x => x.ID_BuoiHoc == idnh).ToList();
+            BuoiHoc time = db.BuoiHocs.Where(x => x.ID_BH == idnh).FirstOrDefault();
+         //   List<ThamDu> thamsu = db.ThamDus.Where(x=>x.MaKH == Session["MaKH"].ToString()).ToList();
+         List<SinhVien> sinhVien = db.SinhViens.ToList();
+            List<DiemDanhview> emplist = new List<DiemDanhview>();
+            foreach (var dd in diemDanh)
+            {
+
+                foreach (var sv in sinhVien)
+                {
+                    if (sv.MSSV.Trim() == dd.MSSV.Trim())
+                    {
+                        DiemDanhview ddModel = new DiemDanhview
+                        {
+                            MSSV = sv.MSSV,
+                            Firstname = sv.FirstName,
+                            Lastname = sv.LastName,
+                            Birthday = (DateTime)sv.Birthday,
+                            DiemDanh = dd.status,
+                        };
+                        emplist.Add(ddModel);
+                    }
+
+                }
+
+
+            }
+            ExcelPackage pck = new ExcelPackage();
+            ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
+
+            ws.Cells["A1"].Value = "Course";
+            ws.Cells["B1"].Value = time.MaKH;
+
+            ws.Cells["A2"].Value = "Date";
+            ws.Cells["B2"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", time.NgayHoc);
+
+
+            ws.Cells["A6"].Value = "ID";
+            ws.Cells["B6"].Value = "Last Name";
+            ws.Cells["C6"].Value = "First Name";
+            ws.Cells["D6"].Value = "Birhday";
+            ws.Cells["E6"].Value = "Attendance";
+
+            int rowStart = 7;
+            foreach (var item in emplist)
+            {
+                ws.Cells[string.Format("A{0}", rowStart)].Value = item.MSSV;
+                ws.Cells[string.Format("B{0}", rowStart)].Value = item.Lastname;
+                ws.Cells[string.Format("C{0}", rowStart)].Value = item.Firstname;
+                ws.Cells[string.Format("D{0}", rowStart)].Value = string.Format("{0:dd/MM/yyyy}", item.Birthday);
+                ws.Cells[string.Format("E{0}", rowStart)].Value = item.DiemDanh;
+                rowStart++;
+            }
+
+            ws.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
+            Response.BinaryWrite(pck.GetAsByteArray());
+            Response.End();
+
+        }
+
     }
 }
