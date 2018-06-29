@@ -2,6 +2,7 @@
 @model IEnumerable<WebApplication2.Models.MonHoc>
 @{
     ViewBag.Title = "Open";
+    Layout = "~/Views/Shared/_1Layout.cshtml";
 
 }
 
@@ -34,14 +35,14 @@
                                 {
                                     <tr>
                                         <td>
-                                            <a href="~/Course/Index/@item.MaMH">
+                                            @*<a href="~/Course/Index/@item.MaMH">*@
                                                 @Html.DisplayFor(modelItem => item.MaMH)
-                                                </a>
+                                               
                                         </td>
                                         <td>
-                                            <a href="~/Course/Index/@item.MaMH">
+                                            @*<a href="~/Course/Index/@item.MaMH">*@
                                                 @Html.DisplayFor(modelItem => item.TenMH)
-                                            </a>
+                                            
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Mota)

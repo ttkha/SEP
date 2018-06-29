@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "ListDiemDanh";
     var date = (List<BuoiHoc>)ViewBag.Date;
-
+    Layout = "~/Views/Shared/_1Layout.cshtml";
 }
 
 <head>
@@ -43,7 +43,7 @@
                                     textdate = DateTime.Parse(textdate).ToString("dd/MM/yyyy");
                                     listItems.Add(new SelectListItem
                                     {
-                                        Text = textdate + " (" + i.ToString() + ")",
+                                        Text =  " (" + i.ToString() + ")"+ textdate,
                                         Value = item.ID_BH.ToString()
                                     //Text = "Session " + i.ToString(),
                                     //Value = i.ToString()

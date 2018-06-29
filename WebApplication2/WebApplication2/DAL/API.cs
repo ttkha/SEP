@@ -14,7 +14,7 @@ namespace WebApplication2
 {
     public class API
     {
-        SepEntities db = new SepEntities();
+        sep21t22Entities2 db = new sep21t22Entities2();
         Data da = new Data();
         private string urlAddress = "https://entool.azurewebsites.net/SEP21";
         private string urlConnect;
@@ -73,6 +73,27 @@ namespace WebApplication2
             urlConnect = "";
             return null;
         }
+
+        public string LoginSecret(string email, string pass)
+        {
+            urlConnect = urlAddress + "/Login?Username={0}&Password={1}";
+            urlConnect = string.Format(urlConnect, email, pass);
+            data = Url(urlConnect);
+            if (data != "")
+            {
+                dynamic Account = JsonConvert.DeserializeObject(data);
+                string code = Account.code;
+                if (int.Parse(code) == 0)
+                {
+                    string secret = Account.data.secret;
+                    urlConnect = "";
+                    return secret;
+                }
+            }
+            urlConnect = "";
+            return "";
+        }
+
 
         public List<Students.Student> GetMember(string id)
         {
@@ -187,6 +208,7 @@ namespace WebApplication2
         //    }
         //    return null;
         //}
+     
 
     }
 }

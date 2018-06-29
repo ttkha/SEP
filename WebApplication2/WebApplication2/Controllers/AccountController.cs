@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class AccountController : Controller
     {
-        SepEntities db = new SepEntities();
+        sep21t22Entities2 db = new sep21t22Entities2();
         API api = new API();
         // GET: Account
         public ActionResult Login()
@@ -21,20 +21,29 @@ namespace WebApplication2.Controllers
         public async System.Threading.Tasks.Task<ActionResult> Login(string username, string password)
         {
             var checkId = api.Check_Login(username, password);
+            var secret = api.LoginSecret(username, password);
             if (checkId != null)
             {
-                var xz = await api.TestLesson(checkId.data.Id);
-                Session["MaGV"] = checkId.data.Id;
+                try {
+                    var xz = await api.TestLesson(checkId.data.Id);
+                    Session["MaGV"] = checkId.data.Id;
+                    Session["secret"] = secret;
 
-                foreach (var item in xz)
-                {
-                    Session["ID"] = item.Name;
+                    foreach (var item in xz)
+                    {
+                        Session["ID"] = item.Name;
+                    }
+
+
+                    Session["name"] = username;
+                    return RedirectToAction("Index", "Home");
                 }
-
-
-                Session["name"] = username;
+                catch (Exception) {
+                    return RedirectToAction("Login", "Account");
+                }
+             
                 //s  Session["monhoc"] = user.GiangDays.FirstOrDefault(x => x.ID_GiangVien == user.ID).ID_MonHoc;
-                return RedirectToAction("Index", "Home");
+              
             }
 
             //var user = db.GiangViens.FirstOrDefault(x => x.Username == username);

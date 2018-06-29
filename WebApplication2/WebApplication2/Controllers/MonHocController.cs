@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class MonHocController : Controller
     {
-        SepEntities db = new SepEntities();
+        sep21t22Entities2 db = new sep21t22Entities2();
         // GET: MonHoc
         public ActionResult Index()
         {
@@ -19,7 +19,10 @@ namespace WebApplication2.Controllers
         public ActionResult Open()
         {
             string ID = Session["ID"].ToString();
-            var model = db.MonHocs.Where(x => x.TenMH == ID);
+
+            var model = db.MonHocs.Where(x => x.TenMH == ID).ToList();
+            
+          
             return View(model);
         }
 

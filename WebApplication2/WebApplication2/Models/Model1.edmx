@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="sep21t22Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BuoiHoc">
           <Key>
             <PropertyRef Name="ID_BH" />
@@ -185,7 +185,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SepModelStoreContainer">
+        <EntityContainer Name="sep21t22ModelStoreContainer">
           <EntitySet Name="BuoiHoc" EntityType="Self.BuoiHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiemDanh" EntityType="Self.DiemDanh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiangDay" EntityType="Self.GiangDay" Schema="dbo" store:Type="Tables" />
@@ -232,7 +232,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SepModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="sep21t22Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BuoiHoc">
           <Key>
             <PropertyRef Name="ID_BH" />
@@ -429,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SepEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="sep21t22Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BuoiHocs" EntityType="Self.BuoiHoc" />
           <EntitySet Name="DiemDanhs" EntityType="Self.DiemDanh" />
           <EntitySet Name="GiangDays" EntityType="Self.GiangDay" />
@@ -477,9 +477,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SepModelStoreContainer" CdmEntityContainer="SepEntities">
+        <EntityContainerMapping StorageEntityContainer="sep21t22ModelStoreContainer" CdmEntityContainer="sep21t22Entities2">
           <EntitySetMapping Name="BuoiHocs">
-            <EntityTypeMapping TypeName="SepModel.BuoiHoc">
+            <EntityTypeMapping TypeName="sep21t22Model.BuoiHoc">
               <MappingFragment StoreEntitySet="BuoiHoc">
                 <ScalarProperty Name="ID_BH" ColumnName="ID_BH" />
                 <ScalarProperty Name="NgayHoc" ColumnName="NgayHoc" />
@@ -489,7 +489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DiemDanhs">
-            <EntityTypeMapping TypeName="SepModel.DiemDanh">
+            <EntityTypeMapping TypeName="sep21t22Model.DiemDanh">
               <MappingFragment StoreEntitySet="DiemDanh">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MSSV" ColumnName="MSSV" />
@@ -499,7 +499,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiangDays">
-            <EntityTypeMapping TypeName="SepModel.GiangDay">
+            <EntityTypeMapping TypeName="sep21t22Model.GiangDay">
               <MappingFragment StoreEntitySet="GiangDay">
                 <ScalarProperty Name="ID_GiangVien" ColumnName="ID_GiangVien" />
                 <ScalarProperty Name="MaMH" ColumnName="MaMH" />
@@ -508,7 +508,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiangViens">
-            <EntityTypeMapping TypeName="SepModel.GiangVien">
+            <EntityTypeMapping TypeName="sep21t22Model.GiangVien">
               <MappingFragment StoreEntitySet="GiangVien">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -519,7 +519,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhoaHocs">
-            <EntityTypeMapping TypeName="SepModel.KhoaHoc">
+            <EntityTypeMapping TypeName="sep21t22Model.KhoaHoc">
               <MappingFragment StoreEntitySet="KhoaHoc">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
@@ -530,7 +530,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MonHocs">
-            <EntityTypeMapping TypeName="SepModel.MonHoc">
+            <EntityTypeMapping TypeName="sep21t22Model.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
                 <ScalarProperty Name="MaMH" ColumnName="MaMH" />
                 <ScalarProperty Name="TenMH" ColumnName="TenMH" />
@@ -539,7 +539,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SinhViens">
-            <EntityTypeMapping TypeName="SepModel.SinhVien">
+            <EntityTypeMapping TypeName="sep21t22Model.SinhVien">
               <MappingFragment StoreEntitySet="SinhVien">
                 <ScalarProperty Name="MSSV" ColumnName="MSSV" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -550,7 +550,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SepModel.sysdiagram">
+            <EntityTypeMapping TypeName="sep21t22Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -561,7 +561,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThamDus">
-            <EntityTypeMapping TypeName="SepModel.ThamDu">
+            <EntityTypeMapping TypeName="sep21t22Model.ThamDu">
               <MappingFragment StoreEntitySet="ThamDu">
                 <ScalarProperty Name="MSSV" ColumnName="MSSV" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
