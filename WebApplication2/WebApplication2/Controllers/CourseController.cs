@@ -293,7 +293,7 @@ namespace WebApplication2.Controllers
         }
 
 
-        // sync Members
+        // sync Members to  API
         public async System.Threading.Tasks.Task<ActionResult> SynMember(string id)
         {
             // SYNC MEMBERS (can` string id cua course)
@@ -334,5 +334,55 @@ namespace WebApplication2.Controllers
 
             return RedirectToAction("ListStudent", "Course", new { id = (string)Session["MaKH"] });
         }
+
+
+        //Sync Attendance to API
+
+        public async System.Threading.Tasks.Task<ActionResult> syncAttendanceAsync()
+        {
+            HttpClient client = new HttpClient();
+
+            string id = (string)Session["MaKH"];
+            string lecid = (string)Session["MaGV"];
+            string sec = (string)Session["secret"];
+
+            var value = new
+            {
+                course = id,
+                sessions = db.BuoiHocs.Where(x => x.MaKH == id).AsEnumerable().Select(b => new
+                {
+                    id = b.Buoi_thu,
+                    date = DateTime.Parse(b.NgayHoc.ToString()).ToString("yyyy-MM-ddThh:mm:ss"),
+                    info = string.Empty
+                }).ToArray(),
+                attendance = db.DiemDanhs.AsEnumerable().Where(x => x.BuoiHoc.MaKH == id).Select(m => new
+                {
+                    student = m.MSSV,
+                    checklist = db.DiemDanhs.Where(x => x.status == true && x.BuoiHoc.MaKH == id && x.MSSV== m.MSSV).Select(z => z.BuoiHoc.Buoi_thu).ToArray(),
+                    info = string.Empty
+                })
+            };
+            var json = JsonConvert.SerializeObject(value);
+
+            var values = new Dictionary<string, string>
+                                {
+                                    { "uid", lecid },
+                                    { "secret", sec },
+                                    { "data", json }
+                                };
+
+            var content = new FormUrlEncodedContent(values);
+            var response = await client.PostAsync("https://entool.azurewebsites.net/SEP21/SyncAttendance", content);
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            GetResponeMessage ResponeMessage = JsonConvert.DeserializeObject<GetResponeMessage>(responseString);
+            //	Session["SynMessage"] = ResponeMessage.message.ToString();
+
+            return RedirectToAction("ListDiemDanh", new { id = Session["BH"] });
+
+        }
+
+
+
     }
 }

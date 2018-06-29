@@ -26,7 +26,9 @@
                         <a href="@Url.Action("ExportToExcel","Course", new {idss =  Session["BH"].ToString() })">Export Excel</a>
                        
                     </div>
-
+                    <a href="~/Course/syncAttendanceAsync">
+                        <input type="submit" value="Sync Sinh Viên" style="height:35px" />
+                    </a>
 
                     @*<h6 class="card-subtitle">Data table example</h6>*@
                     <div class="table-responsive m-t-40">

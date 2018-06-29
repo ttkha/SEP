@@ -36,7 +36,7 @@ namespace WebApplication2.Controllers
 
 
                     Session["name"] = username;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Open", "MonHoc");
                 }
                 catch (Exception) {
                     return RedirectToAction("Login", "Account");

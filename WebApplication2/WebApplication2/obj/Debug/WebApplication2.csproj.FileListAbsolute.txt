@@ -512,3 +512,4 @@ C:\Users\Kha Tran\Desktop\29.6\WebApplication2\WebApplication2\obj\Debug\WebAppl
 C:\Users\Kha Tran\Desktop\29.6\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 C:\Users\Kha Tran\Desktop\29.6\WebApplication2\WebApplication2\obj\Debug\WebApplication2.Properties.Resources.resources
 C:\Users\Kha Tran\Desktop\29.6\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.GenerateResource.Cache
+C:\Users\Kha Tran\Desktop\29.6\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
