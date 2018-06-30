@@ -24,7 +24,7 @@
     <title>Đại Học Văn Lang</title>
     <!-- Custom CSS -->
   
-    <link href="~/Content/123layout/style.min.css" rel="stylesheet" /> 
+    <link href="~/Content/123layout/style.css" rel="stylesheet" /> 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -66,9 +66,9 @@
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
                             <!-- dark Logo text -->
-                            <img src="~/Resources/21.png" alt="homepage" class="dark-logo" />
+                            <img src="~/Resources/2.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="~/Resources/21.png"  class="light-logo" alt="homepage" />
+                            <img src="~/Resources/2.png"  class="light-logo" alt="homepage" />
                         </span>
                     </a>
                 </div>
@@ -135,7 +135,7 @@
                         </li>*@
                         <li> <a class="waves-effect waves-dark" href="~/MonHoc/Open" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Môn Học Đang Dạy</span></a></li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="~/MonHoc/Open" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Khóa Học Đang Dạy</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Khóa Học Đang Dạy</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @foreach (var item in course)
                                 {
@@ -239,8 +239,9 @@
         <script src="~/Content/123layout/custom.min.js"></script>
       
         <!-- This is data table -->
-        <script src="~/Content/123layout/jquery.dataTables.min.js"></script>
-        
+        @*<script src="~/Content/123layout/jquery.dataTables.min.js"></script>*@
+
+    <script src="~/Content/123layout/jquery.dataTables.js"></script>
         <!-- start - This is for export functionality only -->
         <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>

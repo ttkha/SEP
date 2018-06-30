@@ -233,6 +233,7 @@
   <ItemGroup>
     <Content Include="assets\images\1.png" />
     <Content Include="assets\images\2.png" />
+    <Content Include="Content\123layout\style.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -577,7 +578,7 @@
     <Content Include="Content\js\dataTables.jqueryui.min.js" />
     <Content Include="Content\js\dataTables.semanticui.js" />
     <Content Include="Content\js\dataTables.semanticui.min.js" />
-    <Content Include="Content\js\jquery.dataTables.js" />
+    <Content Include="Content\123layout\jquery.dataTables.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\Loginteamplate\css\main.css" />
     <Content Include="Content\Loginteamplate\css\util.css" />
@@ -627,9 +628,9 @@
     </Content>
     <None Include="Resources\4.png" />
     <None Include="Resources\1.png" />
-    <None Include="Resources\2.png" />
     <None Include="Resources\3.png" />
     <None Include="Resources\21.png" />
+    <None Include="Resources\2.png" />
     <Content Include="Resources\img-01.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -923,7 +924,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

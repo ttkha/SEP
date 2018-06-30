@@ -39,6 +39,7 @@ namespace WebApplication2.Controllers
                     return RedirectToAction("Open", "MonHoc");
                 }
                 catch (Exception) {
+                    TempData["Error"] = ("Username or password is wrong");
                     return RedirectToAction("Login", "Account");
                 }
              
