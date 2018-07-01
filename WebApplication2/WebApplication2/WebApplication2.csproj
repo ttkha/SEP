@@ -233,6 +233,7 @@
   <ItemGroup>
     <Content Include="assets\images\1.png" />
     <Content Include="assets\images\2.png" />
+    <Content Include="Content\123layout\jquery-3.2.1.min.js" />
     <Content Include="Content\123layout\style.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -535,7 +536,6 @@
     <Content Include="assets\icons\weather-icons\less\css\variables-night.css" />
     <Content Include="assets\icons\weather-icons\less\css\variables-time.css" />
     <Content Include="assets\icons\weather-icons\less\css\variables-wind-names.css" />
-    <Content Include="Content\123layout\jquery-3.2.1.min.js" />
     <Content Include="Content\123layout\jquery.dataTables.min.js" />
     <Content Include="Content\123layout\jquery.sparkline.min.js" />
     <Content Include="Content\123layout\perfect-scrollbar.jquery.min.js" />

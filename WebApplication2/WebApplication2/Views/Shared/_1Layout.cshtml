@@ -23,8 +23,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="~/Resources/1.png">
     <title>Đại Học Văn Lang</title>
     <!-- Custom CSS -->
-  
-    <link href="~/Content/123layout/style.css" rel="stylesheet" /> 
+
+    <link href="~/Content/123layout/style.min.css" rel="stylesheet" />
+    @*<link href="~/Content/123layout/style.css" rel="stylesheet" />*@ 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -119,7 +120,7 @@
                             <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Session["name"] <span class="caret"></span></a>
                             <div class="dropdown-menu animated flipInY">
                                 <!-- text-->
-                                <a href="/Account/Logout" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                                <a href="~/Account/Logout" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                                 <!-- text-->
                             </div>
                         </div>
@@ -151,7 +152,7 @@
                         </li>
                       
                         @*<li class="nav-small-cap">--- SUPPORT</li>*@
-                        <li> <a class="waves-effect waves-dark" href="/Account/Logout" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Log Out</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="~/Account/Logout" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Log Out</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -217,7 +218,9 @@
         <!-- ============================================================== -->
         <!-- All Jquery -->
         <!-- ============================================================== -->
-        <script src="~/Content/123layout/jquery-3.2.1.min.js"></script>
+       
+
+    <script src="~/Content/123layout/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap tether Core JavaScript -->
         <script src="~/Content/123layout/popper.min.js"></script>
         <script src="~/Content/123layout/bootstrap.min.js"></script>
