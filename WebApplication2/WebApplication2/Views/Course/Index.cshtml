@@ -37,7 +37,7 @@
                                     //var a = db.BuoiHocs.OrderByDescending(y => y.ID_BH).FirstOrDefault().ID_BH;
                                        <tr>
                                             <td style="text-align : center">
-                                                <a href="~/Course/ListDiemDanh/">
+                                                <a href="~/Course/ListDiemDanh/@item.BuoiHocs.LastOrDefault(x=>x.MaKH==item.MaKH).ID_BH">
                                                 @Html.DisplayFor(modelItem => item.MaKH)</a>
                                             </td>
                                             <td style="text-align : center" >
