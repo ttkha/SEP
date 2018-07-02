@@ -15,7 +15,7 @@ namespace WebApplication2.Controllers
     {
         public HttpClient client = new HttpClient();
         public API api = new API();
-        sep21t22Entities2 db = new sep21t22Entities2();
+        sep21t22Entities db = new sep21t22Entities();
         public static string makhdiemdanh = "";
         // GET: Student
         public ActionResult Index(string id)

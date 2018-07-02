@@ -17,7 +17,7 @@ namespace WebApplication2.DAL
         static string strConection = null;//"data source=125.234.238.137,8082;initial catalog=sep21t22;user id=sep21t22;password=heavyink;MultipleActiveResultSets=True;";
         public Utility()
         {
-            strConection = new WebApplication2.Models.sep21t22Entities2().Database.Connection.ConnectionString;
+            strConection = new WebApplication2.Models.sep21t22Entities().Database.Connection.ConnectionString;
         }
         public SqlConnection OpenDb()
         {

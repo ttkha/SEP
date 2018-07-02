@@ -1,7 +1,7 @@
 ﻿@using WebApplication2.Models;
 @using WebApplication2.DAL;
 @{
-    sep21t22Entities2 db = new sep21t22Entities2();
+    sep21t22Entities db = new sep21t22Entities();
     string ma = Session["MaGV"].ToString();
     var course = db.KhoaHocs.Where(x => x.Ma == ma);
     string ID = Session["ID"].ToString();
@@ -69,7 +69,7 @@
                             <!-- dark Logo text -->
                             <img src="~/Resources/2.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            @*<img src="~/Resources/22.png"  class="light-logo" alt="homepage" />*@
+                            <img src="~/Resources/2.png"  class="light-logo" alt="homepage" />
                         </span>
                     </a>
                 </div>
@@ -114,8 +114,8 @@
             <div class="scroll-sidebar">
                 <!-- User Profile-->
                 <div class="user-profile">
-                    <div class="user-pro-body">
-                        <div><img src="" alt="user-img" class="img-circle"></div>
+                    <div class="user-pro-body" style="text-align: center">
+                        <div ><i class="fa fa-user" style="font-size : 3rem"></i></div>
                         <div class="dropdown">
                             <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Session["name"] <span class="caret"></span></a>
                             <div class="dropdown-menu animated flipInY">
@@ -134,9 +134,9 @@
                             <a class="waves-effect waves-dark" href="~/MonHoc/Open" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard </span></a>
                            
                         </li>*@
-                        <li> <a class="waves-effect waves-dark" href="~/MonHoc/Open" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Môn Học Đang Dạy</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="~/MonHoc/Open" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Subject learning</span></a></li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Khóa Học Đang Dạy</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Course is Teaching</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @foreach (var item in course)
                                 {

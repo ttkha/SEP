@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class AccountController : Controller
     {
-        sep21t22Entities2 db = new sep21t22Entities2();
+        sep21t22Entities db = new sep21t22Entities();
         API api = new API();
         // GET: Account
         public ActionResult Login()

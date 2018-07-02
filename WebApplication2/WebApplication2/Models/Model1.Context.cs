@@ -13,10 +13,10 @@ namespace WebApplication2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class sep21t22Entities2 : DbContext
+    public partial class sep21t22Entities : DbContext
     {
-        public sep21t22Entities2()
-            : base("name=sep21t22Entities2")
+        public sep21t22Entities()
+            : base("name=sep21t22Entities")
         {
         }
     

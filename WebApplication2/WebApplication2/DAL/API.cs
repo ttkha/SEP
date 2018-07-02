@@ -14,7 +14,7 @@ namespace WebApplication2
 {
     public class API
     {
-        sep21t22Entities2 db = new sep21t22Entities2();
+        sep21t22Entities db = new sep21t22Entities();
         Data da = new Data();
         private string urlAddress = "https://entool.azurewebsites.net/SEP21";
         private string urlConnect;

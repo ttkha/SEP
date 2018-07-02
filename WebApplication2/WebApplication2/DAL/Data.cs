@@ -12,7 +12,7 @@ namespace WebApplication2.DAL
 {
     public class Data
     {
-        sep21t22Entities2 db = new sep21t22Entities2();
+        sep21t22Entities db = new sep21t22Entities();
         Utility ut = new Utility();
         SqlCommand cmd;
         //SqlDataAdapter sda;
